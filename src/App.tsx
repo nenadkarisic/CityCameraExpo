@@ -1,19 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
+// import { View } from 'react-native';
+// import { Header, Button, Spinner } from './components/common';
+import reducers from './reducers'
+import Router from './Router';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+
+class App extends Component{
+
+    render(){
+        //ReduxThunk je midlevare zato smo ubacili apply middleware i ubacili ovo ispod kako bismo imali dodatne opcije na store-u
+        return (
+            <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+                <Router />
+            </Provider>
+        );
+    }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
