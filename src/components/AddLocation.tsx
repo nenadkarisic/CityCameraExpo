@@ -19,16 +19,14 @@ import {
   NO_LOCATION_SELECTED_ALERT_TITLE,
   NO_LOCATION_SELECTED_MSG
 } from "./StringConstants";
+import { GEOCODING_API_KEY, GOOGLE_PLACES_API_KEY } from './googleAPIKeys';
 
 const INITIAL_LONGITUDE_DELTA = 80;
 const INITIAL_LATITUDE_DELTA = 80;
 const LATITUDE_DELTA = 0.01;
 const LONGITUDE_DELTA = 0.01;
 
-// Google geocoding API key for development purposes only.
-const GEOCODING_API_KEY = "AIzaSyB-LBlbUjMzYNvC_itfyJXtHaxwIwwBHcI";
-// Google Places API key for development purposes only.
-const GOOGLE_PLACES_API_KEY = "AIzaSyAoK5QIN2dHyZoXz0rLBEPYkUNUhTP9dS0";
+// API keys relocated
 
 class AddLocation extends Component {
   constructor() {
