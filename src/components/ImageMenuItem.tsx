@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 const ImageMenuItem = ({ imagePath }) => {
   const { menuItemStyle, imageStyle } = styles;
@@ -13,7 +13,7 @@ const ImageMenuItem = ({ imagePath }) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   menuItemStyle: {
     flex: 1,
     borderTopWidth: 1,
@@ -33,6 +33,6 @@ const styles = {
     width: 150,
     zIndex: 4
   }
-};
+});
 
 export default ImageMenuItem;

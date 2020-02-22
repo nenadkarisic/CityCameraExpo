@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   AsyncStorage,
+  StyleSheet,
 } from "react-native";
 import ImagePicker from "react-native-image-picker";
 import Toast from 'react-native-simple-toast';
@@ -147,7 +148,7 @@ class AddPhoto extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   mainContainerStyle: {
     backgroundColor: "#cdf6f7",
     flex: 1,
@@ -181,7 +182,7 @@ const styles = {
     width: 100,
     alignSelf: "center"
   }
-};
+});
 
 const mapStateToProps = state => {
   return {

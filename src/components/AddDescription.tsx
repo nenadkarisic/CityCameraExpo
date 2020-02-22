@@ -6,7 +6,8 @@ import {
   Image,
   TouchableOpacity,
   AsyncStorage,
-  TextInput
+  TextInput,
+  StyleSheet
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import { descriptionAdded } from '../actions';
@@ -59,7 +60,7 @@ class AddDescription extends Component {
 };
 
 
-const styles = {
+const styles = StyleSheet.create({
 
   menuItemsContainerStyle: {
     flex: 1,
@@ -97,7 +98,7 @@ const styles = {
     alignItems: 'center',
     fontSize: 24,
   }
-}
+});
 
 const mapStateToProps = state => {
   return {

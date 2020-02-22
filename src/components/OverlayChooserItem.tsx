@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 const OverlayChooserItem = ({ imagePath }) => {
   const { overlayItemStyle, imageStyle } = styles;
@@ -12,7 +12,7 @@ const OverlayChooserItem = ({ imagePath }) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   overlayItemStyle: {
     position: 'absolute',
     zIndex: 5
@@ -21,6 +21,6 @@ const styles = {
     height: 110,
     width: 110
   }
-};
+});
 
 export default OverlayChooserItem;

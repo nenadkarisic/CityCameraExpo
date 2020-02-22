@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 const TouchableMenuItem = ({ imagePath, onPress }) => {
   const { menuItemStyle, imageStyle } = styles;
@@ -16,7 +16,7 @@ const TouchableMenuItem = ({ imagePath, onPress }) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   menuItemStyle: {
     flex: 1,
     borderTopWidth: 1,
@@ -36,6 +36,6 @@ const styles = {
     width: 150,
     zIndex: 4
   }
-};
+});
 
 export default TouchableMenuItem;
