@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 const Button = ({onPress, children}) =>{
     const {buttonStyle, textStyle} = styles;
@@ -13,7 +13,7 @@ const Button = ({onPress, children}) =>{
     );
 };
 
-const styles = {
+const styles = StyleSheet.create({
     textStyle: {
 
         alignSelf: 'center',
@@ -31,7 +31,7 @@ const styles = {
         borderRadius: 5,
         margin: 10,
     }
-}
+});
 
 // export { Button: Button};
 export  { Button };

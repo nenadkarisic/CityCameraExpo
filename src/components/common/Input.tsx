@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, View, Text } from 'react-native';
+import { TextInput, View, Text, StyleSheet } from 'react-native';
 
 const Input = ( { label, value, onChangeText, placeholder, secureTextEntry } ) =>{
     const { inputStyle, labelStyle, containerStyle} = styles;
@@ -20,7 +20,7 @@ const Input = ( { label, value, onChangeText, placeholder, secureTextEntry } ) =
     )
 };
 
-const styles = {
+const styles = StyleSheet.create({
     inputStyle:{
         color: '#000',
         paddingLeft:5,
@@ -41,6 +41,6 @@ const styles = {
         flexDirection: 'row',
         alignItems: 'center',
     },
-};
+});
 
 export { Input }

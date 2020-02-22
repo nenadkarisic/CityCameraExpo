@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, BackHandler, AsyncStorage } from "react-native";
+import { View, StyleSheet, Text, BackHandler, AsyncStorage, Alert } from "react-native";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Actions } from "react-native-router-flux";
@@ -244,7 +244,7 @@ class PostCreator extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   mainContainerStyle: {
     flex: 1,
     zIndex: 0
@@ -254,17 +254,17 @@ const styles = {
     paddingVertical: 15,
     paddingHorizontal: 15,
     flexDirection: "column",
-    alignItems: "space-around",
+    // alignItems: "space-around",
     zIndex: 1,
     justifyContent: "center",
-    // alignItems: "center"
+    alignItems: "center"
   },
   menuRowStyle: {
     flex: 1,
     flexDirection: "row",
     zIndex: 2
   }
-};
+});
 
 // za slanje state-ova ka reduxu i dalje
 const mapDispatchToProps = dispatch => {
