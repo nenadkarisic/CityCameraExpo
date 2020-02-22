@@ -19,21 +19,21 @@ import {
 // import PostCreator from "../components/PostCreator";
 import Toast from "react-native-simple-toast";
 
-export const userNameChanged = text => {
+export const userNameChanged = (text: string) => {
   return {
     type: USERNAME_CHANGED,
     payload: text
   };
 };
 
-export const emailChanged = text => {
+export const emailChanged = (text: string) => {
   return {
     type: EMAIL_CHANGED,
     payload: text //<--novi email koji korisnik kuca
   };
 };
 
-export const passwordChanged = text => {
+export const passwordChanged = (text: string) => {
   return {
     type: PASSWORD_CHANGED,
     payload: text //<--novi pass koji korisnik kuca
@@ -77,7 +77,12 @@ export const passwordChanged = text => {
 //   };
 // };
 
-export const loginUser = ({ userName, password }) => {
+export type LoginUserPayload = {
+  userName: string;
+  password: string;
+};
+ 
+export const loginUser = ({ userName, password }: LoginUserPayload) => {
   return dispatch => {
     dispatch({ type: LOGIN_USER });
     API.login(userName, password)
@@ -91,7 +96,11 @@ export const loginUser = ({ userName, password }) => {
               ).then(_data => {
                 Session.save(response.data.user, response.data.token);
 
-                loginUserSuccess(dispatch, response.data.user, response.data.token);
+                loginUserSuccess(
+                  dispatch,
+                  response.data.user,
+                  response.data.token
+                );
                 Actions.postCreator();
                 //for reseting all fields on login
                 dispatch({ type: LOGOUT });

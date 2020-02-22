@@ -1,70 +1,101 @@
 import React, { Component } from "react";
-import API from "../services/API";
 import Session from "../services/Session";
-import { View, Text, TextInput, StyleSheet, ImageBackground, Keyboard, Image, AsyncStorage} from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  ImageBackground,
+  Keyboard,
+  Image,
+  AsyncStorage
+} from "react-native";
 import { connect } from "react-redux";
-import { userNameChanged, passwordChanged, loginUser } from "../actions";
+import {
+  userNameChanged,
+  passwordChanged,
+  loginUser,
+  LoginUserPayload
+} from "../actions";
 import { Actions } from "react-native-router-flux";
-import { Card, CardSection, Input, Spinner, Button } from "./common";
-import backgroundImage from "../assets/images/bg.jpg"
+import { Spinner, Button } from "./common";
+import backgroundImage from "../assets/images/bg.jpg";
 
-class LoginForm extends Component {
+interface Props {
+  userName: string;
+  password: string;
+  error: string;
+  loading: boolean;
+  loginUser: (payload: LoginUserPayload) => void;
+  userNameChanged: (
+    payload: string
+  ) => {
+    type: string;
+    payload: string;
+  };
+  passwordChanged: (
+    payload: string
+  ) => {
+    type: string;
+    payload: string;
+  };
+}
 
-  constructor(props){
-    super(props);
-  }
+class LoginForm extends Component<Props> {
 
-  componentDidMount(){
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  componentDidMount() {
     AsyncStorage.getItem("token")
-      .then((token)=>{
+      .then(token => {
         // var token = JSON.parse(token);
         // if(currentUser){
         //   this.props.userNameChanged(currentUser.username)
         //   this.props.passwordChanged(currentUser.password)
-         
+
         //   const { userName, password } = this.props;
         //   this.props.loginUser({userName, password}) //<--from mapStateToProps
         // }
 
-        if(token){
-          AsyncStorage.getItem("user")
-          .then((user)=>{
+        if (token) {
+          AsyncStorage.getItem("user").then(user => {
             Session.save(JSON.parse(user), token);
-            Actions.postCreator(); 
+            Actions.postCreator();
           });
         }
       })
       .catch(err => {
-      console.log(err)
-    })
+        console.log(err);
+      });
   }
 
   onButtonPress() {
-    const { userName, password } = this.props;
-    this.props.loginUser({ userName, password });
+    const { userName, password, loginUser } = this.props;
+    loginUser({ userName, password });
     Keyboard.dismiss();
     // this.onUserNameChange('');
     // this.onPasswordChange('')
   }
 
-  onUserNameChange(text) {
-    this.props.userNameChanged(text);
+  onUserNameChange(text: string) {
+    userNameChanged(text);
   }
 
-  onPasswordChange(text) {
-    this.props.passwordChanged(text);
+  onPasswordChange(text: string) {
+    passwordChanged(text);
   }
 
-  renderError(){
-    if (this.props.error){
+  renderError() {
+    if (this.props.error) {
       return (
         <View>
-          <Text style={styles.errorTextStyle}>
-              {this.props.error}
-          </Text>
+          <Text style={styles.errorTextStyle}>{this.props.error}</Text>
         </View>
-      )
+      );
     }
+    return null;
   }
 
   renderLogInButton() {
@@ -76,93 +107,89 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <ImageBackground 
-        source={backgroundImage}          
-        style={styles.backgroundImage}
-      >
+      <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
         <View style={styles.header}>
-          <Image source={require('../assets/images/whiteCamera.png')} style={{width: 25, height:25, marginLeft:10, marginRight:10}} />
+          <Image
+            source={require("../assets/images/whiteCamera.png")}
+            style={{ width: 25, height: 25, marginLeft: 10, marginRight: 10 }}
+          />
           <Text style={styles.headerText}>CityCam</Text>
         </View>
 
         <View style={styles.container}>
-            <View style={styles.inputContainer}>
-              <TextInput 
-                style={styles.input} 
-                placeholder="username" 
-                autoCapitalize = 'none'
-                placeholderTextColor= "white"                
-                underlineColorAndroid="transparent"
-                onChangeText={this.onUserNameChange.bind(this)}
-                value={this.props.userName} //<-- iz mapStateToPropsa(iz reducera)
-              />
-              <TextInput 
-                style={styles.input} 
-                secureTextEntry
-                placeholder="password" 
-                autoCapitalize = 'none'
-                placeholderTextColor= "white"
-                underlineColorAndroid="transparent"
-                onChangeText={this.onPasswordChange.bind(this)}
-                value={this.props.password} //<-- iz mapStateToPropsa
-              />
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder="username"
+              autoCapitalize="none"
+              placeholderTextColor="white"
+              underlineColorAndroid="transparent"
+              onChangeText={this.onUserNameChange.bind(this)}
+              value={this.props.userName} //<-- iz mapStateToPropsa(iz reducera)
+            />
+            <TextInput
+              style={styles.input}
+              secureTextEntry
+              placeholder="password"
+              autoCapitalize="none"
+              placeholderTextColor="white"
+              underlineColorAndroid="transparent"
+              onChangeText={this.onPasswordChange.bind(this)}
+              value={this.props.password} //<-- iz mapStateToPropsa
+            />
           </View>
-            {this.renderError()}
-            {this.renderLogInButton()}
+          {this.renderError()}
+          {this.renderLogInButton()}
           <View>
             <Text style={styles.signUpTextStyle} onPress={Actions.signup}>
               Register
             </Text>
           </View>
-       </View>
-        
+        </View>
       </ImageBackground>
-
     );
   }
 }
 
-
-const styles = StyleSheet.create ({
-
+const styles = StyleSheet.create({
   container: {
     flex: 10,
     justifyContent: "center",
     alignItems: "center"
   },
 
-  header:{
-    flex:1,
+  header: {
+    flex: 1,
     flexDirection: "row",
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.6)"
   },
 
   headerText: {
     color: "white",
     fontSize: 22,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   backgroundImage: {
     width: "100%",
-    flex: 1,
+    flex: 1
   },
 
   inputContainer: {
-    width:"70%",
-    marginBottom: 15,
+    width: "70%",
+    marginBottom: 15
   },
 
   input: {
     color: "white",
     width: "100%",
-    height: 40,  
-    fontSize: 20,      
-    backgroundColor:"rgba(0,0,0,0.6)",
+    height: 40,
+    fontSize: 20,
+    backgroundColor: "rgba(0,0,0,0.6)",
     padding: 5,
     paddingLeft: 15,
     margin: 8,
-    borderRadius: 5,    
+    borderRadius: 5
   },
 
   signUpTextStyle: {
@@ -170,7 +197,7 @@ const styles = StyleSheet.create ({
     alignItems: "center",
     color: "white",
     fontWeight: "bold",
-    marginTop: 10,
+    marginTop: 10
   },
 
   errorTextStyle: {
@@ -179,12 +206,10 @@ const styles = StyleSheet.create ({
     color: "white",
     backgroundColor: "transparent",
     fontWeight: "bold",
-    textShadowColor:"red",
-    textShadowOffset: {width: -1, height: 1}
-    
-  },
-})
-
+    textShadowColor: "red",
+    textShadowOffset: { width: -1, height: 1 }
+  }
+});
 
 //mapStateToProps helper služi za komunikaciju iz reducera u komponentu, tj da vratimo properti koji hoćemo iz
 //reducera u komponentu.
