@@ -11,7 +11,8 @@ const Footer = () => {
         Linking.canOpenURL(HYPERETHER_URL)
           .then(supported => {
             if (!supported) {
-              console.log(NO_BROWSER_ERROR_MESSAGE);
+              // console.log(NO_BROWSER_ERROR_MESSAGE);
+              throw Error("An error occurred");
             } else {
               return Linking.openURL(HYPERETHER_URL);
             }
