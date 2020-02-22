@@ -257,7 +257,7 @@ const styles = {
     alignItems: "space-around",
     zIndex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    // alignItems: "center"
   },
   menuRowStyle: {
     flex: 1,

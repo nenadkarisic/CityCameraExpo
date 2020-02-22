@@ -81,7 +81,7 @@ export type LoginUserPayload = {
   userName: string;
   password: string;
 };
- 
+
 export const loginUser = ({ userName, password }: LoginUserPayload) => {
   return dispatch => {
     dispatch({ type: LOGIN_USER });
@@ -150,7 +150,7 @@ const logOutJump = dispatch => {
   Actions.login();
 };
 
-export const logOut = _logOut => {
+export const logOut = () => {
   return dispatch => {
     Alert.alert(
       "Log Out",
@@ -168,7 +168,15 @@ export const logOut = _logOut => {
   };
 };
 
-export const registerUser = ({ userName, email, password }) => {
+export const registerUser = ({
+  userName,
+  email,
+  password
+}: {
+  userName: string;
+  email: string;
+  password: string;
+}) => {
   console.log({ userName, email, password });
   return dispatch => {
     API.register(userName, email, password)
@@ -192,28 +200,28 @@ export const registerUser = ({ userName, email, password }) => {
 //Action creator preko readux-thunk-a vraca funkciju koja ce se kasnije pozvati preko dispatch - a.
 //------------Post Actions --------------------
 //akciju treba povezati sa reducerom preko POST_IMAGE_ADDED
-export const imageAdded = image => {
+export const imageAdded = (image: File) => {
   return {
     type: POST_IMAGE_ADDED,
     payload: image
   };
 };
 
-export const descriptionAdded = description => {
+export const descriptionAdded = (description: string) => {
   return {
     type: POST_DESCRIPTION_ADDED,
     payload: description
   };
 };
 
-export const addLocation = position => {
+export const addLocation = (position: object) => {
   return {
     type: POST_LOCATION_ADDED,
     payload: position
   };
 };
 
-export const postSent = post => {
+export const postSent = (post: object) => {
   return {
     type: POST_SENT,
     payload: post

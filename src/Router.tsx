@@ -13,14 +13,18 @@ import {
   // imageAdded,
   // descriptionAdded,
   // addLocation,
-  loginUser,
-  postSent,
+  // loginUser,
+  // postSent,
   logOut
 } from "./actions";
 // import { Session } from "./services/Session";
 
-class RouterComponent extends Component {
-  constructor(props: Readonly<{}>) {
+interface Props {
+  logout?: () => (dispatch: any) => void;
+}
+
+class RouterComponent extends Component<Props> {
+  constructor(props) {
     super(props);
   }
 
@@ -28,7 +32,7 @@ class RouterComponent extends Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          this.props.logOut();
+          logOut();
         }}
       >
         <View
@@ -84,8 +88,8 @@ class RouterComponent extends Component {
 // docs: React Redux - API Reference - connect()
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginUser: bindActionCreators(loginUser, dispatch),
-    postSent: bindActionCreators(postSent, dispatch),
+    // loginUser: bindActionCreators(loginUser, dispatch),
+    // postSent: bindActionCreators(postSent, dispatch),
     logOut: bindActionCreators(logOut, dispatch)
   };
 };
