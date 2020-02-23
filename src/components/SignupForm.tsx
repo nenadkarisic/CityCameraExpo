@@ -1,56 +1,96 @@
 import React, { Component } from "react";
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  ImageBackground, 
-  Image, 
-  TextInput 
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  // Image,
+  TextInput
 } from "react-native";
 import { connect } from "react-redux";
-import { Actions } from "react-native-router-flux";
+// import { Actions } from "react-native-router-flux";
 import {
   userNameChanged,
-  emailChanged,
   passwordChanged,
+  emailChanged,
   registerUser
 } from "../actions";
-import { Button, Card, CardSection, Input, Spinner } from "./common";
+import { Button, Spinner } from "./common";
 import backgroundImage from "../assets/images/bg.jpg";
-import ValidationComponent from 'react-native-form-validator';
+// import ValidationComponent from "react-native-form-validator";
 
-class SignupForm extends ValidationComponent {
+interface Props {
+  userName: string;
+  email: string;
+  password: string;
+  error: string;
+  loading: boolean;
+  userNameChanged: (
+    payload: string
+  ) => {
+    type: string;
+    payload: string;
+  };
+  passwordChanged: (
+    payload: string
+  ) => {
+    type: string;
+    payload: string;
+  };
+  emailChanged: (
+    payload: string
+  ) => {
+    type: string;
+    payload: string;
+  };
+  registerUser: ({
+    userName,
+    email,
+    password
+  }: {
+    userName: string;
+    email: string;
+    password: string;
+  }) => (dispatch: any) => void;
+}
+
+// extends ValidationComponent  -- REMOVED from class declaration
+
+class SignupForm extends Component<Props> {
+  // userName: string;
+  // email: string;
+  // password: string;
+  // error: string;
   onButtonPress() {
     const { userName, email, password } = this.props;
     // this.validate({
     //   email:{email: true}
     // })
     // console.log('Validacija ', this.getErrorMessages())
-    this.props.registerUser({ userName, email, password });
+    registerUser({ userName, email, password });
   }
 
   onUserNameChange(text) {
-    this.props.userNameChanged(text);
+    userNameChanged(text);
   }
 
   onEmailChange(text) {
-    this.props.emailChanged(text);
+    emailChanged(text);
   }
 
   onPasswordChange(text) {
-    this.props.passwordChanged(text);
+    passwordChanged(text);
   }
 
-  renderError(){
-    if (this.props.error){
+  renderError() {
+    if (this.props.error) {
       return (
         <View>
-          <Text style={styles.errorTextStyle}>
-              {this.props.error}
-          </Text>
+          <Text style={styles.errorTextStyle}>{this.props.error}</Text>
         </View>
-      )
+      );
     }
+    return null;
   }
 
   renderRegisterButton() {
@@ -63,14 +103,13 @@ class SignupForm extends ValidationComponent {
   render() {
     return (
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
-
         <View style={styles.container}>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
               placeholder="username"
               placeholderTextColor="white"
-              autoCapitalize = 'none'              
+              autoCapitalize="none"
               underlineColorAndroid="transparent"
               onChangeText={this.onUserNameChange.bind(this)}
               value={this.props.userName} //<-- iz mapStateToPropsa(iz reducera)
@@ -80,7 +119,7 @@ class SignupForm extends ValidationComponent {
               style={styles.input}
               placeholder="email"
               placeholderTextColor="white"
-              autoCapitalize = 'none'              
+              autoCapitalize="none"
               underlineColorAndroid="transparent"
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.email} //<-- iz mapStateToPropsa(iz reducera)
@@ -91,7 +130,7 @@ class SignupForm extends ValidationComponent {
               secureTextEntry
               placeholder="password"
               placeholderTextColor="white"
-              autoCapitalize = 'none'              
+              autoCapitalize="none"
               underlineColorAndroid="transparent"
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password} //<-- iz mapStateToPropsa
@@ -99,7 +138,6 @@ class SignupForm extends ValidationComponent {
           </View>
           {this.renderError()}
           {this.renderRegisterButton()}
-          
         </View>
       </ImageBackground>
     );
@@ -127,7 +165,7 @@ const styles = StyleSheet.create({
     color: "white",
     width: "100%",
     height: 40,
-    fontSize: 20,    
+    fontSize: 20,
     backgroundColor: "rgba(0,0,0,0.6)",
     padding: 5,
     paddingLeft: 15,
@@ -151,7 +189,8 @@ const mapStateToProps = state => {
     userName: state.auth.userName,
     email: state.auth.email,
     password: state.auth.password,
-    error: state.auth.error,    
+    error: state.auth.error,
+    loading: state.auth.loading
   };
 };
 
