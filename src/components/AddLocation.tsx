@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, LegacyRef } from "react";
 import {
   View,
   StyleSheet,
   TouchableOpacity,
   Image,
   Alert,
-  Button,
+  // Button,
   Keyboard
 } from "react-native";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -19,18 +19,61 @@ import {
   NO_LOCATION_SELECTED_ALERT_TITLE,
   NO_LOCATION_SELECTED_MSG
 } from "./StringConstants";
-import { GEOCODING_API_KEY, GOOGLE_PLACES_API_KEY } from './googleAPIKeys';
+import {
+  // GEOCODING_API_KEY,
+  GOOGLE_PLACES_API_KEY
+} from "./googleAPIKeys";
+
 
 const INITIAL_LONGITUDE_DELTA = 80;
 const INITIAL_LATITUDE_DELTA = 80;
 const LATITUDE_DELTA = 0.01;
 const LONGITUDE_DELTA = 0.01;
+        
+// type LatLng = {
+//   latitude: Number,
+//   longitude: Number,
+// }
+
+// type Mark = {
+//   coordinates: LatLng;
+// }
+
+interface Props {
+  addLocation: (
+    position: object
+  ) => {
+    type: string;
+    payload: object;
+  };
+}
+
+interface State {
+  isMounted: boolean;
+  // bilo je markers: object[]; i nije na liniji 271 mogao da pronadje property od mark.coordinates
+  markers: Array<any>;
+  isDeviceLocationOn: boolean;
+  askedForLocation: boolean;
+  keepCheckingForLocation: boolean;
+  region: {
+    latitude: number;
+    longitude: number;
+    latitudeDelta: number;
+    longitudeDelta: number;
+  };
+}
 
 // API keys relocated
 
-class AddLocation extends Component {
-  constructor() {
-    super();
+class AddLocation extends Component<Props, State> {
+  // constructor() {
+  //   super();
+
+  watchID: number;
+  setMarkerRef: LegacyRef<Marker>;
+
+  constructor(props) {
+    super(props);
     this.state = {
       isMounted: false,
       markers: [],
@@ -122,7 +165,7 @@ class AddLocation extends Component {
     const latlng = {
       latitude: e.nativeEvent.coordinate.latitude,
       longitude: e.nativeEvent.coordinate.longitude
-    };
+    }
     if (this.state.isMounted) {
       this.setState({
         region: {
@@ -152,7 +195,8 @@ class AddLocation extends Component {
         listViewDisplayed="auto"
         fetchDetails={true}
         renderDescription={row => row.description}
-        onPress={(data, details = null) => {
+        // onPress={(data, details = null) => {
+        onPress={(details = null) => {
           Keyboard.dismiss();
           const { location } = details.geometry;
           this.setState({
@@ -220,13 +264,13 @@ class AddLocation extends Component {
             onRegionChangeComplete={region => this.setState({ region })}
           >
             {this.state.markers.map((mark, i) => (
-              <MapView.Marker
+              <Marker
                 key={i}
                 ref={this.setMarkerRef}
                 draggable
                 coordinate={mark.coordinates}
                 pinColor="#E64A19"
-              ></MapView.Marker>
+              />
             ))}
           </MapView>
         </View>

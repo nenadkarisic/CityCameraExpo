@@ -19,7 +19,8 @@ import {
 } from "../actions";
 import { Actions } from "react-native-router-flux";
 import { Spinner, Button } from "./common";
-import backgroundImage from "../assets/images/bg.jpg";
+// import backgroundImage from "../assets/images/bg.jpg";
+const backgroundImage = require("../assets/images/bg.jpg");
 
 interface Props {
   userName: string;

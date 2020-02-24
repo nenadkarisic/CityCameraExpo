@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Image, Linking, StyleSheet } from "react-native";
-import { NO_BROWSER_ERROR_MESSAGE, HYPERETHER_URL } from "../StringConstants";
+import { HYPERETHER_URL } from "../StringConstants";
 
 const Footer = () => {
   const { logoContainterStyle, imageStyle } = styles;

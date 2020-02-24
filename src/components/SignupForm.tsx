@@ -16,7 +16,8 @@ import {
   registerUser
 } from "../actions";
 import { Button, Spinner } from "./common";
-import backgroundImage from "../assets/images/bg.jpg";
+// import backgroundImage from "../assets/images/bg.jpg";
+const backgroundImage = require('../assets/images/bg.jpg');
 // import ValidationComponent from "react-native-form-validator";
 
 interface Props {
@@ -70,15 +71,15 @@ class SignupForm extends Component<Props> {
     registerUser({ userName, email, password });
   }
 
-  onUserNameChange(text) {
+  onUserNameChange(text: string) {
     userNameChanged(text);
   }
 
-  onEmailChange(text) {
+  onEmailChange(text: string) {
     emailChanged(text);
   }
 
-  onPasswordChange(text) {
+  onPasswordChange(text: string) {
     passwordChanged(text);
   }
 

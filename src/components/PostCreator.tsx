@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, BackHandler, AsyncStorage, Alert } from "react-native";
+import {
+  View,
+  StyleSheet,
+  // Text, BackHandler, AsyncStorage,
+  Alert
+} from "react-native";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Actions } from "react-native-router-flux";
@@ -11,15 +16,49 @@ import OverlayChooserItem from "./OverlayChooserItem";
 import API from "../services/API";
 import Session from "../services/Session";
 import {
-  loginUser,
+  // loginUser,
   imageAdded,
   descriptionAdded,
   addLocation,
-  postSent,
+  // postSent,
   logOut
 } from "../actions";
 
-class PostCreator extends Component {
+interface Props {
+  imageAdded: (
+    image: object
+  ) => {
+    type: string;
+    payload: object;
+  };
+  addLocation: (
+    position: object
+  ) => {
+    type: string;
+    payload: object;
+  };
+  descriptionAdded: (
+    description: string
+  ) => {
+    type: string;
+    payload: string;
+  };
+  logOut: () => (dispatch: any) => void;
+  imagePath: string;
+  imageName: string;
+  imageExtension: string;
+  description: string;
+  longitude: number;
+  latitude: number;
+  logedIn: boolean;
+}
+
+interface State {
+  sending: boolean;
+  spinnerOn: boolean;
+}
+
+class PostCreator extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = { sending: false, spinnerOn: false };
@@ -44,7 +83,7 @@ class PostCreator extends Component {
           onPress: () => console.log("Cancel Pressed"),
           style: "cancel"
         },
-        { text: "Yes", onPress: () => this.logOut() }
+        { text: "Yes", onPress: () => logOut() }
       ],
       { cancelable: false }
     );
@@ -52,7 +91,7 @@ class PostCreator extends Component {
 
   resetAllStates() {
     this.props.imageAdded({});
-    this.props.descriptionAdded({});
+    this.props.descriptionAdded("");
     this.props.addLocation({});
   }
 
@@ -84,7 +123,7 @@ class PostCreator extends Component {
       this.props.imageName,
       this.props.imageExtension,
       this.props.description,
-      { long: this.props.longitude, lat: this.props.lat }
+      { long: this.props.longitude, lat: this.props.latitude }
     )
       .then(response => {
         uploadURL = response.data.url;

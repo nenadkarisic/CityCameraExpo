@@ -6,20 +6,35 @@ import {
   Image,
   TouchableOpacity,
   AsyncStorage,
-  StyleSheet,
+  StyleSheet
 } from "react-native";
 import ImagePicker from "react-native-image-picker";
-import Toast from 'react-native-simple-toast';
+import Toast from "react-native-simple-toast";
 import { imageAdded } from "../actions";
 
-class AddPhoto extends Component {
+interface Props {
+  image: any;
+  imageAdded: (
+    // image : any ili File, ili object ???
+    image: object
+  ) => {
+    type: string;
+    payload: object;
+  };
+}
+
+interface State {
+  imageExtension: string;
+}
+
+class AddPhoto extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
       imageExtension: ""
     };
   }
-  getImageExtension(imagePath) {
+  getImageExtension(imagePath: string) {
     let position = imagePath.indexOf(".") + 1;
     let extension = imagePath.substring(position);
     if (position > -1) {
@@ -28,7 +43,7 @@ class AddPhoto extends Component {
   }
 
   launchImagePicker() {
-    var options = {
+    var options: object = {
       storageOptions: {
         skipBackup: true,
         path: "images"
@@ -37,7 +52,8 @@ class AddPhoto extends Component {
 
     ImagePicker.launchImageLibrary(options, response => {
       try {
-        AsyncStorage.getItem("user").then((err, user) => {
+        // AsyncStorage.getItem("user").then((err, user) => {
+        AsyncStorage.getItem("user").then(() => {
           // Toast.show('Loaded User !' + user, Toast.LONG);
 
           if (response.didCancel) {
@@ -47,8 +63,8 @@ class AddPhoto extends Component {
           } else if (response.customButton) {
             console.log("User tapped custom button: ", response.customButton);
           } else {
-            Toast.show('Image selected', Toast.SHORT);
-            this.getImageExtension(response.path)
+            Toast.show("Image selected", Toast.SHORT);
+            this.getImageExtension(response.path);
             let source = {
               path: response.path,
               name: response.fileName,
@@ -77,7 +93,8 @@ class AddPhoto extends Component {
 
     ImagePicker.launchCamera(options, response => {
       try {
-        AsyncStorage.getItem("user").then((err, user)=>{
+        // AsyncStorage.getItem("user").then((err, user) => {
+        AsyncStorage.getItem("user").then(() => {
           if (response.didCancel) {
             console.log("User cancelled image picker");
           } else if (response.error) {
@@ -85,7 +102,7 @@ class AddPhoto extends Component {
           } else if (response.customButton) {
             console.log("User tapped custom button: ", response.customButton);
           } else {
-            Toast.show('Image added', Toast.SHORT);
+            Toast.show("Image added", Toast.SHORT);
             this.getImageExtension(response.path);
             let source = {
               path: response.path,
@@ -97,9 +114,9 @@ class AddPhoto extends Component {
             Actions.pop();
           }
         });
-      } catch (error){
-        console.log('Error with uploading image: ', error)
-        }
+      } catch (error) {
+        console.log("Error with uploading image: ", error);
+      }
     });
   }
 

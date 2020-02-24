@@ -200,7 +200,9 @@ export const registerUser = ({
 //Action creator preko readux-thunk-a vraca funkciju koja ce se kasnije pozvati preko dispatch - a.
 //------------Post Actions --------------------
 //akciju treba povezati sa reducerom preko POST_IMAGE_ADDED
-export const imageAdded = (image: File) => {
+
+// image:File ili image:any ili object jer ima tri prop-a ali nema sve sto se ocekuje od File tipa ???
+export const imageAdded = (image: object) => {
   return {
     type: POST_IMAGE_ADDED,
     payload: image
