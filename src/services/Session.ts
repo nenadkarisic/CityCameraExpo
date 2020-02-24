@@ -1,5 +1,5 @@
-import Storage from 'react-native-storage';
-import { AsyncStorage } from 'react-native';
+// import Storage from 'react-native-storage';
+// import { AsyncStorage } from 'react-native';
 
 var user = null;
 var token = null;

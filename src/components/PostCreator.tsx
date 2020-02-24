@@ -132,7 +132,8 @@ class PostCreator extends Component<Props, State> {
       })
       .then(() => {
         const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = err => {
+        // xhr.onreadystatechange = err => {
+        xhr.onreadystatechange = () => {
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               this.setState({ sending: false });
@@ -249,7 +250,8 @@ class PostCreator extends Component<Props, State> {
           );
         }
       default:
-        return;
+        // return;
+        return null;
     }
   }
 
