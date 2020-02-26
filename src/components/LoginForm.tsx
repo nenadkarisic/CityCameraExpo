@@ -20,7 +20,7 @@ import {
 import { Actions } from "react-native-router-flux";
 import { Spinner, Button } from "./common";
 // import backgroundImage from "../assets/images/bg.jpg";
-const backgroundImage = require("../assets/images/bg.jpg");
+const backgroundImage = require("c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src/assets/images/bg.jpg");
 
 interface Props {
   userName: string;
@@ -111,7 +111,7 @@ class LoginForm extends Component<Props> {
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
         <View style={styles.header}>
           <Image
-            source={require("../assets/images/whiteCamera.png")}
+            source={require("c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src/assets/images/whiteCamera.png")}
             style={{ width: 25, height: 25, marginLeft: 10, marginRight: 10 }}
           />
           <Text style={styles.headerText}>CityCam</Text>

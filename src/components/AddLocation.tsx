@@ -24,6 +24,9 @@ import {
   GOOGLE_PLACES_API_KEY
 } from "./googleAPIKeys";
 
+const ABSOLUTE_PATH: string =
+  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
+
 
 const INITIAL_LONGITUDE_DELTA = 80;
 const INITIAL_LATITUDE_DELTA = 80;
@@ -284,7 +287,7 @@ class AddLocation extends Component<Props, State> {
               onPress={this.saveLocation.bind(this)}
             >
               <Image
-                source={require("../assets/images/yes1.png")}
+                source={require(ABSOLUTE_PATH + "/assets/images/yes1.png")}
                 style={smallImageStyle}
                 resizeMode="contain"
               />
@@ -294,7 +297,7 @@ class AddLocation extends Component<Props, State> {
               onPress={() => Actions.pop()}
             >
               <Image
-                source={require("../assets/images/no1.png")}
+                source={require(ABSOLUTE_PATH + "/assets/images/no1.png")}
                 style={smallImageStyle}
                 resizeMode="contain"
               />

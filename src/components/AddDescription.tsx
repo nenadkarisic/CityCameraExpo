@@ -9,8 +9,9 @@ import {
   TextInput,
   StyleSheet
 } from "react-native";
-// import ImagePicker from 'react-native-image-picker';
 import { descriptionAdded } from "../actions";
+const ABSOLUTE_PATH: string =
+  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 interface Props {
   description: string;
@@ -59,7 +60,7 @@ class AddDescription extends Component<Props> {
           >
             <Image
               style={smallImageStyle}
-              source={require("../assets/images/yes1.png")}
+              source={require(ABSOLUTE_PATH + "/assets/images/yes1.png")}
               // resizeMode='contain'
             />
           </TouchableOpacity>

@@ -1,6 +1,8 @@
 import React from "react";
 import { TouchableOpacity, Image, Linking, StyleSheet } from "react-native";
 import { HYPERETHER_URL } from "../StringConstants";
+const ABSOLUTE_PATH: string =
+  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 const Footer = () => {
   const { logoContainterStyle, imageStyle } = styles;
@@ -22,7 +24,7 @@ const Footer = () => {
     >
       <Image
         style={imageStyle}
-        source={require("../../assets/images/logo_hyperether.png")}
+        source={require(ABSOLUTE_PATH + "/assets/images/logo_hyperether.png")}
       />
     </TouchableOpacity>
   );

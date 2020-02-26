@@ -17,7 +17,7 @@ import {
 } from "../actions";
 import { Button, Spinner } from "./common";
 // import backgroundImage from "../assets/images/bg.jpg";
-const backgroundImage = require('../assets/images/bg.jpg');
+const backgroundImage = require('c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src/assets/images/bg.jpg');
 // import ValidationComponent from "react-native-form-validator";
 
 interface Props {
