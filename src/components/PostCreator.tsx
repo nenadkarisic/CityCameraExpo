@@ -23,8 +23,7 @@ import {
   // postSent,
   logOut
 } from "../actions";
-const ABSOLUTE_PATH: string =
-  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
+import {ABSOLUTE_PATH} from './StringConstants';
 
 interface Props {
   imageAdded: (

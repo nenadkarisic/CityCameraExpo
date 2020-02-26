@@ -17,22 +17,19 @@ import {
   LOCATION_DISABLED_ALERT_TITLE,
   LOCATION_DISABLED_MSG,
   NO_LOCATION_SELECTED_ALERT_TITLE,
-  NO_LOCATION_SELECTED_MSG
+  NO_LOCATION_SELECTED_MSG,
+  ABSOLUTE_PATH
 } from "./StringConstants";
 import {
   // GEOCODING_API_KEY,
   GOOGLE_PLACES_API_KEY
 } from "./googleAPIKeys";
 
-const ABSOLUTE_PATH: string =
-  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
-
-
 const INITIAL_LONGITUDE_DELTA = 80;
 const INITIAL_LATITUDE_DELTA = 80;
 const LATITUDE_DELTA = 0.01;
 const LONGITUDE_DELTA = 0.01;
-        
+
 // type LatLng = {
 //   latitude: Number,
 //   longitude: Number,
@@ -168,7 +165,7 @@ class AddLocation extends Component<Props, State> {
     const latlng = {
       latitude: e.nativeEvent.coordinate.latitude,
       longitude: e.nativeEvent.coordinate.longitude
-    }
+    };
     if (this.state.isMounted) {
       this.setState({
         region: {

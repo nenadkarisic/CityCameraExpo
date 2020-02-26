@@ -18,8 +18,7 @@ import {
   logOut
 } from "./actions";
 // import { Session } from "./services/Session";
-const ABSOLUTE_PATH: string =
-  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
+import {ABSOLUTE_PATH} from './components/StringConstants';
 
 interface Props {
   logout?: () => (dispatch: any) => void;
