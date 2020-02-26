@@ -20,7 +20,9 @@ import {
 import { Actions } from "react-native-router-flux";
 import { Spinner, Button } from "./common";
 // import backgroundImage from "../assets/images/bg.jpg";
-import { ABSOLUTE_PATH } from "./StringConstants";
+// import { ABSOLUTE_PATH } from "./StringConstants";
+const ABSOLUTE_PATH: string =
+  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 interface Props {
   userName: string;
@@ -108,12 +110,12 @@ class LoginForm extends Component<Props> {
   render() {
     return (
       <ImageBackground
-        source={require(ABSOLUTE_PATH + "/assets/images/bg.jpg")}
+        source={require(ABSOLUTE_PATH + "/assets/bg.jpg")}
         style={styles.backgroundImage}
       >
         <View style={styles.header}>
           <Image
-            source={require(ABSOLUTE_PATH + "/assets/images/whiteCamera.png")}
+            source={require(ABSOLUTE_PATH + "/assets/whiteCamera.png")}
             style={{ width: 25, height: 25, marginLeft: 10, marginRight: 10 }}
           />
           <Text style={styles.headerText}>CityCam</Text>

@@ -18,7 +18,9 @@ import {
   logOut
 } from "./actions";
 // import { Session } from "./services/Session";
-import {ABSOLUTE_PATH} from './components/StringConstants';
+// import {ABSOLUTE_PATH} from './components/StringConstants';
+const ABSOLUTE_PATH: string =
+  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 interface Props {
   logout?: () => (dispatch: any) => void;
@@ -40,7 +42,7 @@ class RouterComponent extends Component<Props> {
           style={{ flexDirection: "row", alignItems: "center", marginLeft: 18 }}
         >
           <Image
-            source={require(ABSOLUTE_PATH + '/assets/images/exit.png')}
+            source={require(ABSOLUTE_PATH + '/assets/exit.png')}
             resizeMode={"contain"}
           />
         </View>

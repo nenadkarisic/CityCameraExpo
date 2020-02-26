@@ -10,7 +10,9 @@ import {
   StyleSheet
 } from "react-native";
 import { descriptionAdded } from "../actions";
-import {ABSOLUTE_PATH} from './StringConstants';
+// import {ABSOLUTE_PATH} from './StringConstants';
+const ABSOLUTE_PATH: string =
+  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 interface Props {
   description: string;
@@ -59,7 +61,7 @@ class AddDescription extends Component<Props> {
           >
             <Image
               style={smallImageStyle}
-              source={require(ABSOLUTE_PATH + "/assets/images/yes1.png")}
+              source={require(ABSOLUTE_PATH + "/assets/yes1.png")}
               // resizeMode='contain'
             />
           </TouchableOpacity>

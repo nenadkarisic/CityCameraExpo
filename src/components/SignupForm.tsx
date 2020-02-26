@@ -17,7 +17,9 @@ import {
 } from "../actions";
 import { Button, Spinner } from "./common";
 // import backgroundImage from "../assets/images/bg.jpg";
-import {ABSOLUTE_PATH} from './StringConstants';
+// import {ABSOLUTE_PATH} from './StringConstants';
+const ABSOLUTE_PATH: string =
+  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 // import ValidationComponent from "react-native-form-validator";
 
 interface Props {
@@ -103,7 +105,7 @@ class SignupForm extends Component<Props> {
 
   render() {
     return (
-      <ImageBackground source={require(ABSOLUTE_PATH + '/assets/images/bg.jpg')} style={styles.backgroundImage}>
+      <ImageBackground source={require(ABSOLUTE_PATH + '/assets/bg.jpg')} style={styles.backgroundImage}>
         <View style={styles.container}>
           <View style={styles.inputContainer}>
             <TextInput

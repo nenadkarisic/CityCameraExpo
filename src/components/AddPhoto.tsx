@@ -12,7 +12,9 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import Toast from "react-native-simple-toast";
 import { imageAdded } from "../actions";
-import {ABSOLUTE_PATH} from './StringConstants';
+// import { ABSOLUTE_PATH } from "./StringConstants";
+const ABSOLUTE_PATH: string =
+  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 interface Props {
   image: any;
@@ -27,137 +29,172 @@ interface Props {
 
 interface State {
   imageExtension: string;
+  imageName: string;
 }
 
 class AddPhoto extends Component<Props, State> {
   constructor(props: Readonly<Props>) {
     super(props);
     this.state = {
-      imageExtension: ""
+      imageExtension: "",
+      imageName: ""
     };
   }
-  getImageExtension(imagePath: string) {
-    let position = imagePath.indexOf(".") + 1;
-    let extension = imagePath.substring(position);
-    if (position > -1) {
+  // getImageExtension(imagePath: string) {
+  //   let position = imagePath.indexOf(".") + 1;
+  //   let extension = imagePath.substring(position);
+  //   if (position > -1) {
+  //     this.setState({ imageExtension: extension });
+  //   }
+  // }
+  getImageExtensionAndName(imagePath: string) {
+    let stringTokens: string[] = imagePath.split("/");
+    let imageNameWithExtension: string = stringTokens[stringTokens.length - 1];
+    let extensionSeparator: number = imageNameWithExtension.lastIndexOf(".");
+    let extension: string = imageNameWithExtension.substring(
+      extensionSeparator + 1
+    );
+    let name: string = imageNameWithExtension.substring(0, extensionSeparator);
+    if (extensionSeparator > -1) {
       this.setState({ imageExtension: extension });
+      this.setState({ imageName: name });
     }
   }
 
-  launchImagePicker() {
-    var options: ImagePicker.ImagePickerOptions = {
-      mediaTypes: ImagePicker.MediaTypeOptions.Images
-    };
+  // PERMISSIONS ?
 
-    ImagePicker.launchImageLibraryAsync(options => {
-      try {
-        // AsyncStorage.getItem("user").then((err, user) => {
-        AsyncStorage.getItem("user").then(() => {
-          // Toast.show('Loaded User !' + user, Toast.LONG);
-
-          if (cancelled) {
-            console.log("User cancelled image picker");
-          } else if (response.error) {
-            console.log("ImagePicker Error: ", response.error);
-          } else if (response.customButton) {
-            console.log("User tapped custom button: ", response.customButton);
-          } else {
-            Toast.show("Image selected", Toast.SHORT);
-            this.getImageExtension(response.path);
-            let source = {
-              path: response.path,
-              name: response.fileName,
-              extension: this.state.imageExtension
-            };
-            // console.log("Android path ",response.path);
-            // console.log("IOS path ",response.origURL); <-- see documentacion.
-            this.props.imageAdded(source);
-
-            Actions.pop();
-          }
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    });
-    // ImagePicker.launchImageLibrary(options, response => {
-    //   try {
-    //     // AsyncStorage.getItem("user").then((err, user) => {
-    //     AsyncStorage.getItem("user").then(() => {
-    //       // Toast.show('Loaded User !' + user, Toast.LONG);
-
-    //       if (response.didCancel) {
-    //         console.log("User cancelled image picker");
-    //       } else if (response.error) {
-    //         console.log("ImagePicker Error: ", response.error);
-    //       } else if (response.customButton) {
-    //         console.log("User tapped custom button: ", response.customButton);
-    //       } else {
-    //         Toast.show("Image selected", Toast.SHORT);
-    //         this.getImageExtension(response.path);
-    //         let source = {
-    //           path: response.path,
-    //           name: response.fileName,
-    //           extension: this.state.imageExtension
-    //         };
-    //         // console.log("Android path ",response.path);
-    //         // console.log("IOS path ",response.origURL); <-- see documentacion.
-    //         this.props.imageAdded(source);
-
-    //         Actions.pop();
-    //       }
-    //     });
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // });
-  }
-
-  launchCamera() {
-    var options = {
-      storageOptions: {
-        skipBackup: true,
-        path: "images"
-      }
-    };
-
-    ImagePicker.launchCamera(
-      options,
-      (response: {
-        didCancel: any;
-        error: any;
-        customButton: any;
-        path: string;
-        fileName: any;
-      }) => {
-        try {
-          // AsyncStorage.getItem("user").then((err, user) => {
-          AsyncStorage.getItem("user").then(() => {
-            if (response.didCancel) {
-              console.log("User cancelled image picker");
-            } else if (response.error) {
-              console.log("ImagePicker Error: ", response.error);
-            } else if (response.customButton) {
-              console.log("User tapped custom button: ", response.customButton);
-            } else {
-              Toast.show("Image added", Toast.SHORT);
-              this.getImageExtension(response.path);
-              let source = {
-                path: response.path,
-                name: response.fileName,
-                extension: this.state.imageExtension
-              };
-              this.props.imageAdded(source); //-sending image to action imageAdded
-
-              Actions.pop();
-            }
-          });
-        } catch (error) {
-          console.log("Error with uploading image: ", error);
+  launchImagePicker = async () => {
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images
+      });
+      // AsyncStorage.getItem("user").then((err, user) => {
+      AsyncStorage.getItem("user").then(() => {
+        // Toast.show('Loaded User !' + user, Toast.LONG);
+        if (result.cancelled) {
+          console.log("User cancelled image picker");
+        } else if (result.cancelled === false){
+          Toast.show("Image selected", Toast.SHORT);
+          this.getImageExtensionAndName(result.uri);
+          let source = {
+            path: result.uri,
+            name: this.state.imageName,
+            extension: this.state.imageExtension
+          };
+          // console.log("Android path ",response.path);
+          // console.log("IOS path ",response.origURL); <-- see documentacion.
+          this.props.imageAdded(source);
+          Actions.pop();
         }
-      }
-    );
-  }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // ImagePicker.launchImageLibrary(options, response => {
+  //   try {
+  //     // AsyncStorage.getItem("user").then((err, user) => {
+  //     AsyncStorage.getItem("user").then(() => {
+  //       // Toast.show('Loaded User !' + user, Toast.LONG);
+
+  //       if (response.didCancel) {
+  //         console.log("User cancelled image picker");
+  //       } else if (response.error) {
+  //         console.log("ImagePicker Error: ", response.error);
+  //       } else if (response.customButton) {
+  //         console.log("User tapped custom button: ", response.customButton);
+  //       } else {
+  //         Toast.show("Image selected", Toast.SHORT);
+  //         this.getImageExtension(response.path);
+  //         let source = {
+  //           path: response.path,
+  //           name: response.fileName,
+  //           extension: this.state.imageExtension
+  //         };
+  //         // console.log("Android path ",response.path);
+  //         // console.log("IOS path ",response.origURL); <-- see documentacion.
+  //         this.props.imageAdded(source);
+
+  //         Actions.pop();
+  //       }
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // });
+
+  launchCamera = async () => {
+    try {
+      let result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images
+      });
+      AsyncStorage.getItem("user").then(() => {
+        if (result.cancelled) {
+          console.log("User cancelled image picker");
+        } else if (result.cancelled === false){
+          Toast.show("Image selected", Toast.SHORT);
+          this.getImageExtensionAndName(result.uri);
+          let source = {
+            path: result.uri,
+            name: this.state.imageName,
+            extension: this.state.imageExtension
+          };
+          // console.log("Android path ",response.path);
+          // console.log("IOS path ",response.origURL); <-- see documentacion.
+          this.props.imageAdded(source);
+          Actions.pop();
+        }
+      });
+    } catch (error) {
+      console.log("Error with uploading image: ", error);
+    }
+  };
+  // launchCamera() {
+  //   var options = {
+  //     storageOptions: {
+  //       skipBackup: true,
+  //       path: "images"
+  //     }
+  //   };
+
+  //   ImagePicker.launchCamera(
+  //     options,
+  //     (response: {
+  //       didCancel: any;
+  //       error: any;
+  //       customButton: any;
+  //       path: string;
+  //       fileName: any;
+  //     }) => {
+  //       try {
+  //         // AsyncStorage.getItem("user").then((err, user) => {
+  //         AsyncStorage.getItem("user").then(() => {
+  //           if (response.didCancel) {
+  //             console.log("User cancelled image picker");
+  //           } else if (response.error) {
+  //             console.log("ImagePicker Error: ", response.error);
+  //           } else if (response.customButton) {
+  //             console.log("User tapped custom button: ", response.customButton);
+  //           } else {
+  //             Toast.show("Image added", Toast.SHORT);
+  //             this.getImageExtension(response.path);
+  //             let source = {
+  //               path: response.path,
+  //               name: response.fileName,
+  //               extension: this.state.imageExtension
+  //             };
+  //             this.props.imageAdded(source); //-sending image to action imageAdded
+
+  //             Actions.pop();
+  //           }
+  //         });
+  //       } catch (error) {
+  //         console.log("Error with uploading image: ", error);
+  //       }
+  //     }
+  //   );
+  // }
 
   render() {
     const {
@@ -172,7 +209,7 @@ class AddPhoto extends Component<Props, State> {
       <View style={mainContainerStyle}>
         <View style={imageContainerStyle}>
           <Image
-            source={require(ABSOLUTE_PATH + "/assets/images/photo.png")}
+            source={require(ABSOLUTE_PATH + "/assets/photo.png")}
             style={largeImageStyle}
             resizeMode="contain"
           />
@@ -183,7 +220,7 @@ class AddPhoto extends Component<Props, State> {
             onPress={this.launchCamera.bind(this)}
           >
             <Image
-              source={require(ABSOLUTE_PATH + "/assets/images/camera.png")}
+              source={require(ABSOLUTE_PATH + "/assets/camera.png")}
               style={smallImageStyle}
               resizeMode="contain"
             />
@@ -193,7 +230,7 @@ class AddPhoto extends Component<Props, State> {
             onPress={this.launchImagePicker.bind(this)}
           >
             <Image
-              source={require(ABSOLUTE_PATH + "/assets/images/loading.png")}
+              source={require(ABSOLUTE_PATH + "/assets/loading.png")}
               style={smallImageStyle}
               resizeMode="contain"
             />

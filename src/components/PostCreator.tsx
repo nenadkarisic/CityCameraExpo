@@ -23,7 +23,9 @@ import {
   // postSent,
   logOut
 } from "../actions";
-import {ABSOLUTE_PATH} from './StringConstants';
+// import {ABSOLUTE_PATH} from './StringConstants';
+const ABSOLUTE_PATH: string =
+  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 interface Props {
   imageAdded: (
@@ -168,20 +170,20 @@ class PostCreator extends Component<Props, State> {
       if (this.state.spinnerOn) {
         return (
           <OverlayChooserItem
-            imagePath={require(ABSOLUTE_PATH + "/assets/images/square.png")}
+            imagePath={require(ABSOLUTE_PATH + "/assets/square.png")}
           />
         );
       } else {
         return (
           <OverlayChooserItem
-            imagePath={require(ABSOLUTE_PATH + "/assets/images/square_rotate.png")}
+            imagePath={require(ABSOLUTE_PATH + "/assets/square_rotate.png")}
           />
         );
       }
     } else {
       return (
         <OverlayChooserItem
-          imagePath={require(ABSOLUTE_PATH + "/assets/images/square.png")}
+          imagePath={require(ABSOLUTE_PATH + "/assets/square.png")}
         />
       );
     }
@@ -193,14 +195,14 @@ class PostCreator extends Component<Props, State> {
         if (!this.state.sending && isTouchable) {
           return (
             <TouchableMenuItem
-              imagePath={require(ABSOLUTE_PATH + "/assets/images/photo.png")}
+              imagePath={require(ABSOLUTE_PATH + "/assets/photo.png")}
               onPress={() => Actions.addPhoto()}
             />
           );
         } else {
           return (
             <ImageMenuItem
-              imagePath={require(ABSOLUTE_PATH + "/assets/images/photo_pressed.png")}
+              imagePath={require(ABSOLUTE_PATH + "/assets/photo_pressed.png")}
             />
           );
         }
@@ -208,14 +210,14 @@ class PostCreator extends Component<Props, State> {
         if (!this.state.sending && isTouchable) {
           return (
             <TouchableMenuItem
-              imagePath={require(ABSOLUTE_PATH + "/assets/images/location.png")}
+              imagePath={require(ABSOLUTE_PATH + "/assets/location.png")}
               onPress={() => Actions.addLocation()}
             />
           );
         } else {
           return (
             <ImageMenuItem
-              imagePath={require(ABSOLUTE_PATH + "/assets/images/location_pressed.png")}
+              imagePath={require(ABSOLUTE_PATH + "/assets/location_pressed.png")}
             />
           );
         }
@@ -223,14 +225,14 @@ class PostCreator extends Component<Props, State> {
         if (!this.state.sending && isTouchable) {
           return (
             <TouchableMenuItem
-              imagePath={require(ABSOLUTE_PATH + "/assets/images/about.png")}
+              imagePath={require(ABSOLUTE_PATH + "/assets/about.png")}
               onPress={() => Actions.addDescription()}
             />
           );
         } else {
           return (
             <ImageMenuItem
-              imagePath={require(ABSOLUTE_PATH + "/assets/images/about_pressed.png")}
+              imagePath={require(ABSOLUTE_PATH + "/assets/about_pressed.png")}
             />
           );
         }
@@ -239,14 +241,14 @@ class PostCreator extends Component<Props, State> {
         if (!this.state.sending && isTouchable) {
           return (
             <TouchableMenuItem
-              imagePath={require(ABSOLUTE_PATH + "/assets/images/send.png")}
+              imagePath={require(ABSOLUTE_PATH + "/assets/send.png")}
               onPress={this.onSendPress.bind(this)}
             />
           );
         } else {
           return (
             <ImageMenuItem
-              imagePath={require(ABSOLUTE_PATH + "/assets/images/send_pressed.png")}
+              imagePath={require(ABSOLUTE_PATH + "/assets/send_pressed.png")}
             />
           );
         }
