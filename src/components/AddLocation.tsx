@@ -24,8 +24,10 @@ import {
   // GEOCODING_API_KEY,
   GOOGLE_PLACES_API_KEY
 } from "./googleAPIKeys";
-const ABSOLUTE_PATH: string =
-  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
+
+import Images from '../../src/assets/images/images';
+// const ABSOLUTE_PATH: string =
+//   "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 const INITIAL_LONGITUDE_DELTA = 80;
 const INITIAL_LATITUDE_DELTA = 80;
@@ -286,7 +288,7 @@ class AddLocation extends Component<Props, State> {
               onPress={this.saveLocation.bind(this)}
             >
               <Image
-                source={require(ABSOLUTE_PATH + "/assets/yes1.png")}
+                source={Images.yes1}
                 style={smallImageStyle}
                 resizeMode="contain"
               />
@@ -296,7 +298,7 @@ class AddLocation extends Component<Props, State> {
               onPress={() => Actions.pop()}
             >
               <Image
-                source={require(ABSOLUTE_PATH + "/assets/no1.png")}
+                source={Images.no1}
                 style={smallImageStyle}
                 resizeMode="contain"
               />

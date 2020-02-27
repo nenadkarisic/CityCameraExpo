@@ -4,8 +4,11 @@ import {
   HYPERETHER_URL
   // ABSOLUTE_PATH
 } from "../StringConstants";
-const ABSOLUTE_PATH: string =
-  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
+
+import Images from '../../../src/assets/images/images';
+
+// const ABSOLUTE_PATH: string =
+//   "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 const Footer = () => {
   const { logoContainterStyle, imageStyle } = styles;
@@ -27,7 +30,7 @@ const Footer = () => {
     >
       <Image
         style={imageStyle}
-        source={require(ABSOLUTE_PATH + "/assets/logo_hyperether.png")}
+        source={Images.logo_hyperether}
       />
     </TouchableOpacity>
   );

@@ -12,9 +12,10 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import Toast from "react-native-simple-toast";
 import { imageAdded } from "../actions";
-// import { ABSOLUTE_PATH } from "./StringConstants";
-const ABSOLUTE_PATH: string =
-  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
+
+import Images from '../../src/assets/images/images';
+// const ABSOLUTE_PATH: string =
+//   "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 interface Props {
   image: any;
@@ -209,7 +210,7 @@ class AddPhoto extends Component<Props, State> {
       <View style={mainContainerStyle}>
         <View style={imageContainerStyle}>
           <Image
-            source={require(ABSOLUTE_PATH + "/assets/photo.png")}
+            source={Images.photo}
             style={largeImageStyle}
             resizeMode="contain"
           />
@@ -220,7 +221,7 @@ class AddPhoto extends Component<Props, State> {
             onPress={this.launchCamera.bind(this)}
           >
             <Image
-              source={require(ABSOLUTE_PATH + "/assets/camera.png")}
+              source={Images.camera}
               style={smallImageStyle}
               resizeMode="contain"
             />
@@ -230,7 +231,7 @@ class AddPhoto extends Component<Props, State> {
             onPress={this.launchImagePicker.bind(this)}
           >
             <Image
-              source={require(ABSOLUTE_PATH + "/assets/loading.png")}
+              source={Images.loading}
               style={smallImageStyle}
               resizeMode="contain"
             />

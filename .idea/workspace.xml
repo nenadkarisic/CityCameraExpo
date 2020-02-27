@@ -2,10 +2,78 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c905c0a-edcf-455d-8712-dd3889058c89" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/CityCameraExpo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CityCameraExpo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/about.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/about_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/back_chevron.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/camera.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/camera_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/exit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/images.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/import-png.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/loading.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/loading_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/location.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/location_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo_hyperether.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/no1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/no_pressed1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/photo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/photo_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/refresh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/refresh_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/right_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/right_arrow_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/send.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/send_pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/square.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/square_rotate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/whiteCamera.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/yes1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/yes_pressed1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/import-png.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/import-png.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/about.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/about_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/back_chevron.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/camera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/camera_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/exit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/import-png.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/loading.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/loading_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/location.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/location_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/logo_hyperether.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/no1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/no_pressed1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/photo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/photo_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/refresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/refresh_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/right_arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/right_arrow_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/send.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/send_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/square_rotate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/whiteCamera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/yes1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/yes_pressed1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddDescription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddDescription.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddLocation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddLocation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddPhoto.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddPhoto.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostCreator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostCreator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SignupForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignupForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Footer.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

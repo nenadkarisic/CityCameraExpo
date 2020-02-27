@@ -19,13 +19,10 @@ import {
 } from "../actions";
 import { Actions } from "react-native-router-flux";
 import { Spinner, Button } from "./common";
-// import backgroundImage from "../assets/images/bg.jpg";
-// import { ABSOLUTE_PATH } from "./StringConstants";
 
-// import Images from '../assets';
-
-const ABSOLUTE_PATH: string =
-  "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
+import Images from '../../src/assets/images/images';
+// const ABSOLUTE_PATH: string =
+//   "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 interface Props {
   userName: string;
@@ -113,12 +110,12 @@ class LoginForm extends Component<Props> {
   render() {
     return (
       <ImageBackground
-        source={require(ABSOLUTE_PATH + "/assets/bg.jpg")}
+        source={Images.bg}
         style={styles.backgroundImage}
       >
         <View style={styles.header}>
           <Image
-            source={require(ABSOLUTE_PATH + "/assets/whiteCamera.png")}
+            source={Images.whiteCamera}
             style={{ width: 25, height: 25, marginLeft: 10, marginRight: 10 }}
           />
           <Text style={styles.headerText}>CityCam</Text>
@@ -134,7 +131,6 @@ class LoginForm extends Component<Props> {
               underlineColorAndroid="transparent"
               onChangeText={this.onUserNameChange.bind(this)}
               value={this.props.userName} //<-- iz mapStateToPropsa(iz reducera)
-              // defaultValue={this.props.userName} //<-- iz mapStateToPropsa(iz reducera)
             />
             <TextInput
               style={styles.input}
@@ -145,7 +141,6 @@ class LoginForm extends Component<Props> {
               underlineColorAndroid="transparent"
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password} //<-- iz mapStateToPropsa
-              // defaultValue={this.props.password} //<-- iz mapStateToPropsa
             />
           </View>
           {this.renderError()}

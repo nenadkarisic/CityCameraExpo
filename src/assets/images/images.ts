@@ -1,0 +1,33 @@
+const images = {
+	about_pressed: require('./about_pressed.png'),
+    about: require('./about.png'),
+    back_chevron: require('./back_chevron.png'),
+    bg: require('./bg.jpg'),
+    camera_pressed: require('./camera_pressed.png'),
+    camera: require('./camera.png'),
+    exit: require('./exit.png'),
+    loading_pressed: require('./loading_pressed.png'),
+    loading: require('./loading.png'),
+    location_pressed: require('./location_pressed.png'),
+    location: require('./location.png'),
+    login: require('./login.png'),
+    logo_hyperether: require('./logo_hyperether.png'),
+    no_pressed1: require('./no_pressed1.png'),
+    no1: require('./no1.png'),
+    photo_pressed: require('./photo_pressed.png'),
+    photo: require('./photo.png'),
+    refresh_pressed: require('./refresh_pressed.png'),
+    refresh: require('./refresh.png'),
+    right_arrow_pressed: require('./right_arrow_pressed.png'),
+    right_arrow: require('./right_arrow.png'),
+    search: require('./search.png'),
+    send_pressed: require('./send_pressed.png'),
+    send: require('./send.png'),
+    square_rotate: require('./square_rotate.png'),
+    square: require('./square.png'),
+    whiteCamera: require('./whiteCamera.png'),
+    yes_pressed1: require('./yes_pressed1.png'),
+    yes1: require('./yes1.png')
+};
+
+export default images;
