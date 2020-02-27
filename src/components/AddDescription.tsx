@@ -26,7 +26,7 @@ interface Props {
 
 class AddDescription extends Component<Props> {
   onDescriptionAdded(text: string) {
-    descriptionAdded(text);
+    this.props.descriptionAdded(text);
   }
 
   // onButtonPress(){

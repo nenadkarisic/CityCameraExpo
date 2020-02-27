@@ -21,6 +21,9 @@ import { Actions } from "react-native-router-flux";
 import { Spinner, Button } from "./common";
 // import backgroundImage from "../assets/images/bg.jpg";
 // import { ABSOLUTE_PATH } from "./StringConstants";
+
+// import Images from '../assets';
+
 const ABSOLUTE_PATH: string =
   "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
@@ -82,11 +85,11 @@ class LoginForm extends Component<Props> {
   }
 
   onUserNameChange(text: string) {
-    userNameChanged(text);
+    this.props.userNameChanged(text);
   }
 
   onPasswordChange(text: string) {
-    passwordChanged(text);
+    this.props.passwordChanged(text);
   }
 
   renderError() {
@@ -131,6 +134,7 @@ class LoginForm extends Component<Props> {
               underlineColorAndroid="transparent"
               onChangeText={this.onUserNameChange.bind(this)}
               value={this.props.userName} //<-- iz mapStateToPropsa(iz reducera)
+              // defaultValue={this.props.userName} //<-- iz mapStateToPropsa(iz reducera)
             />
             <TextInput
               style={styles.input}
@@ -141,6 +145,7 @@ class LoginForm extends Component<Props> {
               underlineColorAndroid="transparent"
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password} //<-- iz mapStateToPropsa
+              // defaultValue={this.props.password} //<-- iz mapStateToPropsa
             />
           </View>
           {this.renderError()}

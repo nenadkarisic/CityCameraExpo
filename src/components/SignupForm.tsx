@@ -18,6 +18,7 @@ import {
 import { Button, Spinner } from "./common";
 // import backgroundImage from "../assets/images/bg.jpg";
 // import {ABSOLUTE_PATH} from './StringConstants';
+
 const ABSOLUTE_PATH: string =
   "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 // import ValidationComponent from "react-native-form-validator";
@@ -60,10 +61,6 @@ interface Props {
 // extends ValidationComponent  -- REMOVED from class declaration
 
 class SignupForm extends Component<Props> {
-  // userName: string;
-  // email: string;
-  // password: string;
-  // error: string;
   onButtonPress() {
     const { userName, email, password } = this.props;
     // this.validate({
@@ -74,15 +71,15 @@ class SignupForm extends Component<Props> {
   }
 
   onUserNameChange(text: string) {
-    userNameChanged(text);
+    this.props.userNameChanged(text);
   }
 
   onEmailChange(text: string) {
-    emailChanged(text);
+    this.props.emailChanged(text);
   }
 
   onPasswordChange(text: string) {
-    passwordChanged(text);
+    this.props.passwordChanged(text);
   }
 
   renderError() {
@@ -116,6 +113,7 @@ class SignupForm extends Component<Props> {
               underlineColorAndroid="transparent"
               onChangeText={this.onUserNameChange.bind(this)}
               value={this.props.userName} //<-- iz mapStateToPropsa(iz reducera)
+              // defaultValue={this.props.userName} //<-- iz mapStateToPropsa(iz reducera)
             />
 
             <TextInput
@@ -126,6 +124,7 @@ class SignupForm extends Component<Props> {
               underlineColorAndroid="transparent"
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.email} //<-- iz mapStateToPropsa(iz reducera)
+              // defaultValue={this.props.email} //<-- iz mapStateToPropsa(iz reducera)
             />
 
             <TextInput
@@ -137,6 +136,7 @@ class SignupForm extends Component<Props> {
               underlineColorAndroid="transparent"
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password} //<-- iz mapStateToPropsa
+              // defaultValue={this.props.password} //<-- iz mapStateToPropsa
             />
           </View>
           {this.renderError()}

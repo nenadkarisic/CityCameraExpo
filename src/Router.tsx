@@ -23,7 +23,7 @@ const ABSOLUTE_PATH: string =
   "c:/Users/pc/ReactNativeWorkspace/hyperether/CityCameraExpo/src";
 
 interface Props {
-  logout?: () => (dispatch: any) => void;
+  logOut?: () => (dispatch: any) => void;
 }
 
 class RouterComponent extends Component<Props> {
@@ -35,7 +35,7 @@ class RouterComponent extends Component<Props> {
     return (
       <TouchableOpacity
         onPress={() => {
-          logOut();
+          this.props.logOut();
         }}
       >
         <View
